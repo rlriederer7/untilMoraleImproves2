@@ -46,4 +46,21 @@ public class MoraleController {
         messageService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).body(message);
     }
+
+    @PatchMapping("/messages/{id}")
+    public ResponseEntity<Message> updateMessage(@PathVariable Long id, @RequestBody Message updates){
+        Optional<Message> messageOpt = messageService.findById(id);
+        if (messageOpt.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Message existingMessage = messageOpt.get();
+
+        if (updates.getMessage() !=null) {
+            existingMessage.setMessage(updates.getMessage());
+        }
+
+        Message patchedMessage = messageService.save(existingMessage);
+        return ResponseEntity.status(HttpStatus.OK).body(patchedMessage);
+    }
 }

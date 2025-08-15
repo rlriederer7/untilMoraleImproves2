@@ -12,11 +12,11 @@ public class Message {
     private Long messageId;
     private String message;
     @CreationTimestamp
-    private LocalDateTime timePostedEpoch;
+    private LocalDateTime timePostedMoment;
 
     public Long getMessageId() {return messageId;}
     public String getMessage() {return message;}
-    public LocalDateTime getTimePostedEpoch() {return timePostedEpoch;}
+    public LocalDateTime getTimePostedMoment() {return timePostedMoment;}
 
     public void setMessage(String message) {this.message = message;}
 }
