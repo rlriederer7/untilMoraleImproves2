@@ -1,6 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
+import { messageService } from './services/messageService'
+import MessageForm from './components/messages/MessageForm';
+import MessageList from './components/messages/MessageList';
 
 function App() {
 
@@ -12,8 +14,8 @@ function App() {
     const fetchMessages = async () => {
         setLoading(true);
         try{
-            const response = await fetch('http://localhost:8080/api/messages');
-            const messageData = await response.json();
+            const response = await messageService.getAllMessages();
+            const messageData = await response.data;
             setMessages(messageData);
             setButtonMessage(`There are ${messageData.length} messages`);
         } catch (error){
@@ -30,21 +32,13 @@ function App() {
         e.preventDefault();
 
         try{
-            const response = await fetch('http://localhost:8080/api/messages', {
-                method: 'POST',
-                headers: {
-                    'Content-Type':'application/json',
-                },
-                body: JSON.stringify(newMessage)
-            });
+            await messageService.createMessage(newMessage);
 
-            if (response.ok){
-                setNewMessage({messageId:'',message:'',timePostedMoment:''})
-                fetchMessages();
-            }
+            setNewMessage({messageId:'',message:'',timePostedMoment:''})
+            await fetchMessages();
 
         } catch (error){
-            console.error('Error creating user:', error)
+            console.error('Error creating user: ', error)
         }
     }
 
@@ -54,34 +48,21 @@ function App() {
                 <h1>React App 1</h1>
                 <p>{buttonMessage}</p>
 
-                <form onSubmit={createMessage} style={{margin: '20px'}}>
-                    <div>
-                        <input
-                            type="text"
-                            placeholder="Message"
-                            value={newMessage.message}
-                            onChange={(e) => setNewMessage({...newMessage, message: e.target.value})}
-                            style={{margin: '5px', padding: '5px'}}
-                        />
-                    </div>
-                    <button type="submit" style={{margin: '5px', padding: '5px'}}>
-                        Post Message
-                    </button>
-                </form>
+                <MessageForm
+                    newMessage={newMessage}
+                    setNewMessage={setNewMessage}
+                    onSubmit={createMessage}
+                    loading={loading}
+                />
 
-                <button onClick={fetchMessages} disabled={loading}>
-                    {loading ? 'Loading' : 'Load Messages'}
-                </button>
+                <MessageList
+                    messages={messages}
+                    loading={loading}
+                    onLoadMessages={fetchMessages}
+                />
 
 
-                <div style={{marginTop: '20px'}}>
-                    {messages.map(message => (
-                        <div key={message.message} style={{border: '1px solid white', margin: '10px', padding: '10px'}}>
-                            <h3>{message.message}</h3>
-                            <p>{message.timePostedMoment}</p>
-                        </div>
-                    ))}
-                </div>
+
             </header>
         </div>
 );
