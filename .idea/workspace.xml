@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added basic functionality to post and get messages through the UI">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/messages/MessageList.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/messages/MessageList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/hooks/useMessages.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/hooks/useMessages.js" afterDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though.">
+      <change afterPath="$PROJECT_DIR$/frontend/src/components/messages/MessageStatus.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +99,7 @@
       <workItem from="1755197612793" duration="1456000" />
       <workItem from="1755224294665" duration="8714000" />
       <workItem from="1755280939229" duration="558000" />
-      <workItem from="1755447507339" duration="15996000" />
+      <workItem from="1755447507339" duration="16311000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -144,7 +141,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755464073941</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though.">
+      <option name="closed" value="true" />
+      <created>1755484844079</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1755484844079</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +158,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactored frontend to use separate service and component files/folders, added a hook folder, TODO: put hooks in hook folder" />
     <MESSAGE value="Added basic functionality to post and get messages through the UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added basic functionality to post and get messages through the UI" />
+    <MESSAGE value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though." />
   </component>
 </project>

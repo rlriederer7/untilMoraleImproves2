@@ -9,6 +9,7 @@ function App() {
 
     const { messages, loading, error, retrieveMessages, generateMessage, eradicateMessage } = useMessages();
 
+    // Mild awkwardness, move somewhere else if rate of kludging is high.
     const buttonMessage = error || (messages.length > 0 ? `There are (${messages.length}) messages` : "Clicky!");
 
     const handleCreateMessage = async (e) => {
