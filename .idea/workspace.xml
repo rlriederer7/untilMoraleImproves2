@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though.">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/messages/MessageStatus.js" afterDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +100,7 @@
       <workItem from="1755197612793" duration="1456000" />
       <workItem from="1755224294665" duration="8714000" />
       <workItem from="1755280939229" duration="558000" />
-      <workItem from="1755447507339" duration="16311000" />
+      <workItem from="1755447507339" duration="18620000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -149,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755484844079</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component.">
+      <option name="closed" value="true" />
+      <created>1755485401485</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1755485401485</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +168,7 @@
     <MESSAGE value="Refactored frontend to use separate service and component files/folders, added a hook folder, TODO: put hooks in hook folder" />
     <MESSAGE value="Added basic functionality to post and get messages through the UI" />
     <MESSAGE value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though." />
+    <MESSAGE value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component." />
   </component>
 </project>

@@ -6,6 +6,7 @@ import { useMessages } from "./hooks/useMessages";
 
 function App() {
     const [newMessage, setNewMessage] = useState({messageId:'',message:'',timePostedMoment:''})
+    const [validationError, setValidationError] = useState('');
 
     const { messages, loading, error, retrieveMessages, generateMessage, eradicateMessage } = useMessages();
 
@@ -14,6 +15,14 @@ function App() {
 
     const handleCreateMessage = async (e) => {
         e.preventDefault();
+
+        setValidationError('');
+
+        if (!newMessage.message || newMessage.message.trim() === ''){
+            setValidationError('Enter a message!')
+            return;
+        }
+
         const success = await generateMessage(newMessage);
         if (success) {
             setNewMessage({messageId:'', message:'', timePostedMoment:''});
@@ -29,6 +38,12 @@ function App() {
             <header className="App-header">
                 <h1>React App 1</h1>
                 <p>{buttonMessage}</p>
+
+                {validationError && (
+                    <div style={{color:'red',margin:'10px',border:'1px solid red'}}>
+                        {validationError}
+                    </div>
+                )}
 
                 <MessageForm
                     newMessage={newMessage}
