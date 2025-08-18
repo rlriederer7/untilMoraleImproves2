@@ -1,46 +1,27 @@
 import './App.css';
 import React, {useState} from "react";
-import { messageService } from './services/messageService'
 import MessageForm from './components/messages/MessageForm';
 import MessageList from './components/messages/MessageList';
+import { useMessages } from "./hooks/useMessages";
 
 function App() {
-
-    const [buttonMessage, setButtonMessage] = useState("Clicky!")
-    const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState({messageId:'',message:'',timePostedMoment:''})
-    const [loading, setLoading] = useState(false);
 
-    const fetchMessages = async () => {
-        setLoading(true);
-        try{
-            const response = await messageService.getAllMessages();
-            const messageData = await response.data;
-            setMessages(messageData);
-            setButtonMessage(`There are ${messageData.length} messages`);
-        } catch (error){
-            setButtonMessage('An error occurred: ' + error.message);
+    const { messages, loading, error, retrieveMessages, generateMessage, eradicateMessage } = useMessages();
+
+    const buttonMessage = error || (messages.length > 0 ? `There are (${messages.length}) messages` : "Clicky!");
+
+    const handleCreateMessage = async (e) => {
+        e.preventDefault();
+        const success = await generateMessage(newMessage);
+        if (success) {
+            setNewMessage({messageId:'', message:'', timePostedMoment:''});
         }
-        setLoading(false);
-    }
+    };
 
 //    useEffect(() => {
 //        fetchUsers();
 //    }, []);
-
-    const createMessage = async (e) => {
-        e.preventDefault();
-
-        try{
-            await messageService.createMessage(newMessage);
-
-            setNewMessage({messageId:'',message:'',timePostedMoment:''})
-            await fetchMessages();
-
-        } catch (error){
-            console.error('Error creating user: ', error)
-        }
-    }
 
     return (
         <div className="App-header">
@@ -51,17 +32,16 @@ function App() {
                 <MessageForm
                     newMessage={newMessage}
                     setNewMessage={setNewMessage}
-                    onSubmit={createMessage}
+                    onSubmit={handleCreateMessage}
                     loading={loading}
                 />
 
                 <MessageList
                     messages={messages}
                     loading={loading}
-                    onLoadMessages={fetchMessages}
+                    onLoadMessages={retrieveMessages}
+                    onDeleteMessage={eradicateMessage}
                 />
-
-
 
             </header>
         </div>
