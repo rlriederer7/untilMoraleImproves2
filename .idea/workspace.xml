@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component.">
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="added validation error for when nothing is entered in the message text box, site throws up a warning to the user if they try to submit an empty message.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/messages/MessageForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/messages/MessageForm.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,23 +59,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.App.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.App.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\components\messages" />
@@ -100,7 +102,7 @@
       <workItem from="1755197612793" duration="1456000" />
       <workItem from="1755224294665" duration="8714000" />
       <workItem from="1755280939229" duration="558000" />
-      <workItem from="1755447507339" duration="18620000" />
+      <workItem from="1755447507339" duration="20409000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -158,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755485401485</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added validation error for when nothing is entered in the message text box, site throws up a warning to the user if they try to submit an empty message.">
+      <option name="closed" value="true" />
+      <created>1755488982366</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1755488982367</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +179,7 @@
     <MESSAGE value="Added basic functionality to post and get messages through the UI" />
     <MESSAGE value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, will add a MessageStatus component next. This works for now though." />
     <MESSAGE value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component." />
+    <MESSAGE value="added validation error for when nothing is entered in the message text box, site throws up a warning to the user if they try to submit an empty message." />
+    <option name="LAST_COMMIT_MESSAGE" value="added validation error for when nothing is entered in the message text box, site throws up a warning to the user if they try to submit an empty message." />
   </component>
 </project>
