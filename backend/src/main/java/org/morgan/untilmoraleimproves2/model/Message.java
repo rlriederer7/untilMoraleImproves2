@@ -13,10 +13,12 @@ public class Message {
     private String message;
     @CreationTimestamp
     private LocalDateTime timePostedMoment;
+    private Long userId;
 
     public Long getMessageId() {return messageId;}
     public String getMessage() {return message;}
     public LocalDateTime getTimePostedMoment() {return timePostedMoment;}
+    public Long getUserId() {return userId;}
 
     public void setMessage(String message) {this.message = message;}
 }
