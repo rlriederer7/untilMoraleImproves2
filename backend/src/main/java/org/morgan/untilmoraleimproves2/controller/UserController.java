@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,12 +19,21 @@ import java.util.Optional;
 public class UserController {
     @Autowired
     UserService userService;
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
         try {
+            if (userService.existsByUserName(user.getUserName())){
+                return ResponseEntity.badRequest().build();
+            }
+
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userService.save(user);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
         } catch (Exception e) {
@@ -58,6 +68,10 @@ public class UserController {
 
         if (updates.getUserName() !=null) {
             existingUser.setUserName(updates.getUserName());
+        }
+
+        if (updates.getPassword() !=null) {
+            existingUser.setPassword(passwordEncoder.encode(updates.getPassword()));
         }
 
         User patchedUser = userService.save(existingUser);

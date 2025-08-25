@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added userId to Message.java">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/service/UserService.java" afterDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added user controller/repository/service/model, validation and front end integration not implemented yet">
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/service/CustomUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/untilMoraleImproves2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/MoraleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +59,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -66,32 +74,61 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Node.js.App.js.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.UntilMoraleImproves2Application.executor": "Run",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Morgan/IdeaProjects/untilMoraleImproves2/backend/src/main/java/org/morgan/untilmoraleimproves2/controller",
+    "last_opened_file_path": "C:/Users/Morgan/IdeaProjects/untilMoraleImproves2/backend/src/main/java/org/morgan/untilmoraleimproves2/dto",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "editor.preferences.import",
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\dto" />
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\controller" />
+      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\service" />
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\model" />
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\repository" />
-      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\components\messages" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="UntilMoraleImproves2Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="untilMoraleImproves2" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.morgan.untilmoraleimproves2.UntilMoraleImproves2Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.morgan.untilmoraleimproves2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.UntilMoraleImproves2Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -114,7 +151,9 @@
       <workItem from="1755224294665" duration="8714000" />
       <workItem from="1755280939229" duration="558000" />
       <workItem from="1755447507339" duration="20409000" />
-      <workItem from="1755659323066" duration="3898000" />
+      <workItem from="1755659323066" duration="4098000" />
+      <workItem from="1755909802870" duration="787000" />
+      <workItem from="1756081909087" duration="13914000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -188,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1755659410157</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added user controller/repository/service/model, validation and front end integration not implemented yet">
+      <option name="closed" value="true" />
+      <created>1755664211363</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1755664211363</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +248,7 @@
     <MESSAGE value="Added hooks, added a delete button, also added a sort of awkward kludge wrt const buttonMessage being in App.js, but it seems like overkill to add a whole new component for those two things, and it adds annoying convolution to put it in any existing component." />
     <MESSAGE value="added validation error for when nothing is entered in the message text box, site throws up a warning to the user if they try to submit an empty message." />
     <MESSAGE value="Added userId to Message.java" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added userId to Message.java" />
+    <MESSAGE value="Added user controller/repository/service/model, validation and front end integration not implemented yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added user controller/repository/service/model, validation and front end integration not implemented yet" />
   </component>
 </project>

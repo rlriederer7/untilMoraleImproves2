@@ -14,6 +14,7 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -32,6 +33,14 @@ public class UserService {
 
     public void deleteById(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public Optional<User> findByUserName(String userName) {
+        return userRepository.findByUserName(userName);
+    }
+
+    public boolean existsByUserName(String userName){
+        return userRepository.existsByUserName(userName);
     }
 
 }
