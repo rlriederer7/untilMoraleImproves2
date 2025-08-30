@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added user controller/repository/service/model, validation and front end integration not implemented yet">
-      <change afterPath="$PROJECT_DIR$/python-ml-service/python-ml-service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/src/processing/pipeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/src/processing/processing.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/src/processing/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/word.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Started adding data pipeline. Cleaning basically done, normalization and modelling and api next.">
+      <change afterPath="$PROJECT_DIR$/python-ml-service/src/processing/training_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/untilMoraleImproves2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/untilMoraleImproves2.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/pipeline.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +175,8 @@
       <workItem from="1756332559797" duration="226000" />
       <workItem from="1756332810242" duration="326000" />
       <workItem from="1756333172727" duration="2872000" />
-      <workItem from="1756351003538" duration="4419000" />
+      <workItem from="1756351003538" duration="4527000" />
+      <workItem from="1756519864379" duration="5054000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -271,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756316643272</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Started adding data pipeline. Cleaning basically done, normalization and modelling and api next.">
+      <option name="closed" value="true" />
+      <created>1756356726446</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1756356726446</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -286,6 +289,7 @@
     <MESSAGE value="Added userId to Message.java" />
     <MESSAGE value="Added passwords to users with Spring Security, salted, hashed, with eggs(/j). Also registration and login and logout and an AuthController which is partially redundant with the UserController but it all still works so I will figure out if that's a problem later. Intend to switch over to STATELESS and JWT filters but that is for another day." />
     <MESSAGE value="Added user controller/repository/service/model, validation and front end integration not implemented yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added user controller/repository/service/model, validation and front end integration not implemented yet" />
+    <MESSAGE value="Started adding data pipeline. Cleaning basically done, normalization and modelling and api next." />
+    <option name="LAST_COMMIT_MESSAGE" value="Started adding data pipeline. Cleaning basically done, normalization and modelling and api next." />
   </component>
 </project>
