@@ -1,9 +1,4 @@
-import numpy as np
-import pandas as pd
-import seaborn as sns
 import joblib
-
-from matplotlib import pyplot as plt
 
 from utils import download_clean_separate
 from training_utils import train_model
