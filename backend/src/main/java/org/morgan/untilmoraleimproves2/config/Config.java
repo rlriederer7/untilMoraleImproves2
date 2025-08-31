@@ -63,7 +63,8 @@ public class Config {
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/users").permitAll()
-                        .requestMatchers("/api/messages").permitAll() // Add this for testing
+                        .requestMatchers("/api/messages").permitAll()
+                        .requestMatchers("/api/churn/predict").permitAll()
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())

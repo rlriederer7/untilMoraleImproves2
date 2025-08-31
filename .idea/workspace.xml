@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Cleaned up imports">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Spring boot can now hit the prediction microservice, no frontend integration of it yet tho">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/HttpConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/ChurnPredictionRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/ChurnPredictionResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-ml-service/python-ml-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/python-ml-service.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/processing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/processing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/pipeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,8 +117,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\components\messages" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.morgan.untilmoraleimproves2.dto" />
+    </key>
   </component>
-  <component name="RunManager" selected="Python.pipeline">
+  <component name="RunManager" selected="Python.prediction">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Scripts" />
       <method v="2">
@@ -178,8 +186,9 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.13 (untilMoraleImproves2)" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python-ml-service/src/processing" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" />
@@ -282,8 +291,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pipeline" />
         <item itemvalue="Python.prediction" />
+        <item itemvalue="Python.pipeline" />
         <item itemvalue="Python.training_utils" />
         <item itemvalue="Python.utils" />
         <item itemvalue="Spring Boot.UntilMoraleImproves2Application" />
@@ -322,7 +331,7 @@
       <workItem from="1756519864379" duration="6894000" />
       <workItem from="1756575413552" duration="596000" />
       <workItem from="1756591447143" duration="6962000" />
-      <workItem from="1756603871908" duration="618000" />
+      <workItem from="1756603871908" duration="7782000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -444,7 +453,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756527343172</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="test">
+      <option name="closed" value="true" />
+      <created>1756604570233</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1756604570233</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -473,6 +490,8 @@
     <MESSAGE value="Started adding data pipeline. Cleaning basically done, normalization and modelling and api next." />
     <MESSAGE value="Added training, scaling for predictions, updated pipeline" />
     <MESSAGE value="Cleaned up imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up imports" />
+    <MESSAGE value="test" />
+    <MESSAGE value="Spring boot can now hit the prediction microservice, no frontend integration of it yet tho" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring boot can now hit the prediction microservice, no frontend integration of it yet tho" />
   </component>
 </project>
