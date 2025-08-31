@@ -2,15 +2,19 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 import kagglehub
 import joblib
+pd.set_option('future.no_silent_downcasting', True)
 
 def download_telco_data():
     path = kagglehub.dataset_download("blastchar/telco-customer-churn")
     return pd.read_csv(f"{path}/WA_Fn-UseC_-Telco-Customer-Churn.csv")
 
 def clean_telco_data(df):
-    yes_no_cols = ['Partner','Dependents','PhoneService','OnlineSecurity','OnlineBackup','DeviceProtection','TechSupport','StreamingTV','StreamingMovies','PaperlessBilling','Churn']
+    yes_no_cols = ['Partner','Dependents','PhoneService','OnlineSecurity','OnlineBackup','DeviceProtection','TechSupport','StreamingTV','StreamingMovies','PaperlessBilling','MultipleLines']
+    if 'Churn' in df.columns:
+        yes_no_cols.append('Churn')
+
     for col in yes_no_cols:
-        df[col] = df[col].replace({'Yes':1,'No':0})
+        df[col] = df[col].replace({'Yes':1,'No':0, 'No phone service':2, 'No internet service':2}).astype('int64')
 
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
     df = df.dropna()
@@ -18,8 +22,9 @@ def clean_telco_data(df):
     return df
 
 def separate_fit_scale(df):
-    causes = df.drop('Churn', axis=1)
+    causes = df.drop('Churn', axis=1).drop('customerID',axis=1)
     outcomes = df['Churn']
+
     scaler = StandardScaler()
 
     numerical_cols = causes.select_dtypes(include=['float64', 'int64']).columns
@@ -59,5 +64,3 @@ def download_clean_separate():
     df = clean_telco_data(df)
     causes, outcomes = separate_fit_scale(df)
     return causes, outcomes
-
-print(download_clean_separate())
