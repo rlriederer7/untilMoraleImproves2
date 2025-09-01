@@ -1,7 +1,11 @@
+import os
+
 import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 import kagglehub
 import joblib
+from shared import model_path, scaler_path, label_encoders_path
+
 pd.set_option('future.no_silent_downcasting', True)
 
 def download_telco_data():
@@ -38,15 +42,15 @@ def separate_fit_scale(df):
         causes[col] = le.fit_transform(causes[col])
         label_encoders[col] = le
 
-    joblib.dump(scaler, 'preprocessors/scaler.pkl')
-    joblib.dump(label_encoders, 'preprocessors/label_encoders.pkl')
+    joblib.dump(scaler, scaler_path)
+    joblib.dump(label_encoders, label_encoders_path)
 
     return causes, outcomes
 
 def scale_prediction(df):
     causes = df.copy()
-    scaler = joblib.load('preprocessors/scaler.pkl')
-    label_encoders = joblib.load('preprocessors/label_encoders.pkl')
+    scaler = joblib.load(scaler_path)
+    label_encoders = joblib.load(label_encoders_path)
 
     numerical_cols = causes.select_dtypes(include=['float64', 'int64']).columns
     causes[numerical_cols] = scaler.transform(causes[numerical_cols])

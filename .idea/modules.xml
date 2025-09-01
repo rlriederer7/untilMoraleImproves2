@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/frontend/src/frontend.iml" filepath="$PROJECT_DIR$/frontend/src/frontend.iml" />
       <module fileurl="file://$PROJECT_DIR$/python-ml-service/python-ml-service.iml" filepath="$PROJECT_DIR$/python-ml-service/python-ml-service.iml" />
     </modules>
   </component>

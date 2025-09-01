@@ -1,10 +1,9 @@
-import './App.css';
 import React, {useState} from "react";
-import MessageForm from './components/messages/MessageForm';
-import MessageList from './components/messages/MessageList';
-import { useMessages } from "./hooks/useMessages";
+import MessageForm from '../components/messages/MessageForm';
+import MessageList from '../components/messages/MessageList';
+import { useMessages } from "../hooks/useMessages";
 
-function App() {
+const MessagesPage = () => {
     const [newMessage, setNewMessage] = useState({messageId:'',message:'',timePostedMoment:''})
 
     const { messages, loading, error, retrieveMessages, generateMessage, eradicateMessage } = useMessages();
@@ -14,8 +13,8 @@ function App() {
 
     const handleCreateMessage = async (e) => {
         e.preventDefault();
-        const success = await generateMessage(newMessage);
-        if (success) {
+        const result = await generateMessage(newMessage);
+        if (result.success) {
             setNewMessage({messageId:'', message:'', timePostedMoment:''});
         }
     };
@@ -46,7 +45,7 @@ function App() {
 
             </header>
         </div>
-);
+    );
 }
 
-export default App;
+export default MessagesPage;

@@ -4,10 +4,7 @@ import org.morgan.untilmoraleimproves2.client.PredictionClient;
 import org.morgan.untilmoraleimproves2.dto.ChurnPredictionRequest;
 import org.morgan.untilmoraleimproves2.dto.ChurnPredictionResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/churn")
