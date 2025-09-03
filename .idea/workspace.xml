@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Implemented pages, churn prediction page, fixed a stupid json problem AGAIN, added a start.bat file so you can start the program by clicking on one thing instead of typing 3 commands and getting carpal tunnel by 35, need to make start automatically install requirements and run training iff there's an internet connection but out of time oops">
-      <change afterPath="$PROJECT_DIR$/backend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/resources/application-docker.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python-ml-service/src/processing/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start-docker.sh" afterDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Completely and utterly dockerized!">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/CoefficientsResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/FeatureImportance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +20,9 @@
       <list>
         <option value="JavaScript File" />
         <option value="package.json" />
-        <option value="Class" />
         <option value="Dockerfile" />
         <option value="Python Script" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -343,7 +333,8 @@
       <workItem from="1756603871908" duration="7800000" />
       <workItem from="1756665429408" duration="18301000" />
       <workItem from="1756862497542" duration="1763000" />
-      <workItem from="1756864671511" duration="12768000" />
+      <workItem from="1756864671511" duration="14509000" />
+      <workItem from="1756936012400" duration="3481000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -497,7 +488,39 @@
       <option name="project" value="LOCAL" />
       <updated>1756769855400</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Completely and utterly dockerized!">
+      <option name="closed" value="true" />
+      <created>1756878341282</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1756878341282</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Completely and utterly dockerized!">
+      <option name="closed" value="true" />
+      <created>1756878423886</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1756878423887</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Completely and utterly dockerized!">
+      <option name="closed" value="true" />
+      <created>1756878540461</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1756878540461</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Completely and utterly dockerized!">
+      <option name="closed" value="true" />
+      <created>1756878553935</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1756878553935</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -529,6 +552,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="Spring boot can now hit the prediction microservice, no frontend integration of it yet tho" />
     <MESSAGE value="Implemented pages, churn prediction page, fixed a stupid json problem AGAIN, added a start.bat file so you can start the program by clicking on one thing instead of typing 3 commands and getting carpal tunnel by 35, need to make start automatically install requirements and run training iff there's an internet connection but out of time oops" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented pages, churn prediction page, fixed a stupid json problem AGAIN, added a start.bat file so you can start the program by clicking on one thing instead of typing 3 commands and getting carpal tunnel by 35, need to make start automatically install requirements and run training iff there's an internet connection but out of time oops" />
+    <MESSAGE value="Completely and utterly dockerized!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completely and utterly dockerized!" />
   </component>
 </project>

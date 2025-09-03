@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import joblib
 import logging
@@ -49,6 +49,46 @@ async def predict_churn(request: PredictionRequest):
     probability = model.predict_proba(prediction_data)[0][1]
 
     return {"churn_probability": float(probability)}
+
+@app.get("/coefficients")
+async def get_coefficients():
+    try:
+        feature_names = [
+            'gender', 'SeniorCitizen', 'Partner', 'Dependents', 'tenure',
+            'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity',
+            'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV',
+            'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod',
+            'MonthlyCharges', 'TotalCharges'
+        ]
+
+        coefficients = model.coef_[0]
+        intercept = model.intercept_[0]
+
+        coeff_dict = {}
+        for i, feature in enumerate(feature_names):
+            coeff_dict[feature] = float(coefficients[i])
+
+        sorted_coeffs = sorted(coeff_dict.items(), key=lambda x: abs(x[1]), reverse=True)
+
+        response = {
+            "intercept": float(intercept),
+            "coefficients": coeff_dict,
+            "feature_ranking": [
+                {
+                    "feature":feature,
+                    "coefficient":coeff,
+                    "impact": "increases churn" if coeff > 0 else "decreases churn",
+                    "magnitude": abs(coeff)
+                }
+                for feature, coeff in sorted_coeffs
+            ]
+        }
+
+        return response
+
+    except Exception as e:
+        logger.error(f"Error getting coefficients: {e}")
+        raise HTTPException(status_code=500, detail="Error fetching coefficients")
 
 if __name__ == "__main__":
     import uvicorn
