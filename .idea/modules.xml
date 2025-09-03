@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/python-ml-service/.venv/Scripts/Scripts.iml" filepath="$PROJECT_DIR$/python-ml-service/.venv/Scripts/Scripts.iml" />
-      <module fileurl="file://$PROJECT_DIR$/python-ml-service/src/processing/processing.iml" filepath="$PROJECT_DIR$/python-ml-service/src/processing/processing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/python-ml-service/.venv/Lib/site-packages/site-packages.iml" filepath="$PROJECT_DIR$/python-ml-service/.venv/Lib/site-packages/site-packages.iml" />
-      <module fileurl="file://$PROJECT_DIR$/untilMoraleImproves2.iml" filepath="$PROJECT_DIR$/untilMoraleImproves2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/frontend/src/frontend.iml" filepath="$PROJECT_DIR$/frontend/src/frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/python-ml-service/python-ml-service.iml" filepath="$PROJECT_DIR$/python-ml-service/python-ml-service.iml" />
     </modules>
   </component>
 </project>
