@@ -18,7 +18,7 @@ public class ChurnController {
     @PostMapping("/predict")
     public ResponseEntity<ChurnPredictionResponse> predictChurn(
             @RequestBody ChurnPredictionRequest request) {
-        System.out.println("Received request: " + request); // Add this
+//        System.out.println("Received request: " + request); // Add this
         ChurnPredictionResponse response = predictionClient.predictChurn(request);
         return ResponseEntity.ok(response);
     }

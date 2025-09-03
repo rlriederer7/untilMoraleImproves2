@@ -22,6 +22,7 @@ public class MessageController {
 
     @PostMapping("/messages")
     public ResponseEntity<Message> createMessage(@RequestBody Message message){
+        System.out.println("post attempt");
         try {
             Message savedMessage = messageService.save(message);
             return ResponseEntity.status(HttpStatus.CREATED).body(savedMessage);
@@ -37,6 +38,7 @@ public class MessageController {
 
     @DeleteMapping("/messages/{id}")
     public ResponseEntity<Message> deleteMessage(@PathVariable Long id) {
+        System.out.println("delete attempt");
         Optional<Message> messageOpt = messageService.findById(id);
         if (messageOpt.isEmpty()) {
             return ResponseEntity.notFound().build();

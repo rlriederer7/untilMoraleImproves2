@@ -1,0 +1,78 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: testdatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: spring-backend
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/testdatabase
+      SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: mypassword
+      PREDICTION_SERVICE_URL: http://python-service:8000
+      JAVA_OPTS: "-Djava.awt.headless=true -Dfile.encoding=UTF-8"
+      SPRING_OUTPUT_ANSI_ENABLED: NEVER
+    tty: true
+    stdin_open: true
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+      - python-service
+    networks:
+      - app-network
+    volumes:
+      - ./backend/logs:/app/logs
+
+  python-service:
+    build:
+      context: ./python-ml-service
+      dockerfile: Dockerfile
+    container_name: python-ml-service
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    volumes:
+      - ./python-ml-service/models:/app/models
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      target: development
+    container_name: react-frontend
+    environment:
+      REACT_APP_API_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+      - /app/node_modules
+    networks:
+      - app-network
+    depends_on:
+      - backend
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
