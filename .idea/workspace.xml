@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Completely and utterly dockerized!">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/CoefficientsResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/FeatureImportance.java" afterDir="false" />
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added dtos and microservice endpoint for fetching model coefficients">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -334,7 +333,7 @@
       <workItem from="1756665429408" duration="18301000" />
       <workItem from="1756862497542" duration="1763000" />
       <workItem from="1756864671511" duration="14509000" />
-      <workItem from="1756936012400" duration="3481000" />
+      <workItem from="1756936012400" duration="5008000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -520,7 +519,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756878553935</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added dtos and microservice endpoint for fetching model coefficients">
+      <option name="closed" value="true" />
+      <created>1756940028751</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1756940028751</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -553,6 +560,7 @@
     <MESSAGE value="Spring boot can now hit the prediction microservice, no frontend integration of it yet tho" />
     <MESSAGE value="Implemented pages, churn prediction page, fixed a stupid json problem AGAIN, added a start.bat file so you can start the program by clicking on one thing instead of typing 3 commands and getting carpal tunnel by 35, need to make start automatically install requirements and run training iff there's an internet connection but out of time oops" />
     <MESSAGE value="Completely and utterly dockerized!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completely and utterly dockerized!" />
+    <MESSAGE value="Added dtos and microservice endpoint for fetching model coefficients" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added dtos and microservice endpoint for fetching model coefficients" />
   </component>
 </project>
