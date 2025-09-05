@@ -1,6 +1,7 @@
 import './App.css';
 import MessagesPage from './pages/MessagesPage';
 import ChurnPredictionPage from './pages/ChurnPredictionPage';
+import CoefficientsPage from "./pages/CoefficientsPage";
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -18,11 +19,15 @@ function App() {
                         <Link to="/churn-prediction" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
                             Churn Prediction
                         </Link>
+                        <Link to="/coefficients" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>
+                            Predictive Coefficients
+                        </Link>
                     </nav>
 
                     <Routes>
                         <Route path="/messages" element={<MessagesPage />} />
                         <Route path="/churn-prediction" element={<ChurnPredictionPage />} />
+                        <Route path="/coefficients" element={<CoefficientsPage />} />
                     </Routes>
                 </header>
             </div>

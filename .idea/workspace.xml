@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added dtos and microservice endpoint for fetching model coefficients">
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added coefficient retrieval functionality to backend">
+      <change afterPath="$PROJECT_DIR$/frontend/src/hooks/useCoefficients.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/CoefficientsPage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/services/coefficientService.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,48 +71,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Node.js.App.js.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pipeline.executor&quot;: &quot;Run&quot;,
-    &quot;Python.prediction.executor&quot;: &quot;Run&quot;,
-    &quot;Python.training_utils.executor&quot;: &quot;Run&quot;,
-    &quot;Python.utils.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\Morgan\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
-    &quot;Spring Boot.UntilMoraleImproves2Application.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Morgan/IdeaProjects/untilMoraleImproves2/backend/src/main/resources&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Node.js.App.js.executor": "Run",
+    "Python.pipeline.executor": "Run",
+    "Python.prediction.executor": "Run",
+    "Python.training_utils.executor": "Run",
+    "Python.utils.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "C:\\Users\\Morgan\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.2\\plugins\\Shell Script\\shellcheck.exe",
+    "Spring Boot.UntilMoraleImproves2Application.executor": "Run",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Morgan/IdeaProjects/untilMoraleImproves2/frontend/src/pages",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\Morgan\\AppData\\Roaming\\JetBrains\\IntelliJIdea2025.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\resources" />
+      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\pages" />
+      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\hooks" />
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\services" />
+      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\resources" />
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\python-ml-service\src\processing" />
-      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\dto" />
-      <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\backend\src\main\java\org\morgan\untilmoraleimproves2\controller" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Morgan\IdeaProjects\untilMoraleImproves2\frontend\src\components\messages" />
@@ -333,7 +336,8 @@
       <workItem from="1756665429408" duration="18301000" />
       <workItem from="1756862497542" duration="1763000" />
       <workItem from="1756864671511" duration="14509000" />
-      <workItem from="1756936012400" duration="5008000" />
+      <workItem from="1756936012400" duration="5891000" />
+      <workItem from="1757097594438" duration="3077000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -527,7 +531,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756940028751</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Added coefficient retrieval functionality to backend">
+      <option name="closed" value="true" />
+      <created>1756941736680</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1756941736681</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,6 +573,7 @@
     <MESSAGE value="Implemented pages, churn prediction page, fixed a stupid json problem AGAIN, added a start.bat file so you can start the program by clicking on one thing instead of typing 3 commands and getting carpal tunnel by 35, need to make start automatically install requirements and run training iff there's an internet connection but out of time oops" />
     <MESSAGE value="Completely and utterly dockerized!" />
     <MESSAGE value="Added dtos and microservice endpoint for fetching model coefficients" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added dtos and microservice endpoint for fetching model coefficients" />
+    <MESSAGE value="Added coefficient retrieval functionality to backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added coefficient retrieval functionality to backend" />
   </component>
 </project>
