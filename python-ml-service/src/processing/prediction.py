@@ -6,6 +6,7 @@ import pandas as pd
 from utils import scale_prediction, clean_telco_data
 from shared import model_path, scaler_path, label_encoders_path
 import logging
+from pipeline import ml_pipeline
 
 app = FastAPI(title='Predict-o-matic')
 
@@ -38,6 +39,26 @@ class PredictionRequest(BaseModel):
     PaymentMethod: str
     MonthlyCharges: float
     TotalCharges: float
+
+@app.post("/train")
+async def train_model():
+    try:
+        metrics = ml_pipeline()
+        global model, scaler, label_encoders
+        model = joblib.load(model_path)
+        scaler = joblib.load(scaler_path)
+        label_encoders = joblib.load(label_encoders_path)
+
+        return {
+            "status": "success",
+            "message": "Training complete",
+            "metrics": metrics
+        }
+
+    except Exception as e:
+        logger.error(f"model training error {e}")
+        raise HTTPException(status_code=500, detail = f"training error {str(e)}")
+
 
 @app.post("/predict")
 async def predict_churn(request: PredictionRequest):
@@ -77,7 +98,7 @@ async def get_coefficients():
                 {
                     "feature":feature,
                     "coefficient":coeff,
-                    "impact": "increases churn" if coeff > 0 else "decreases churn",
+                    "impact": "Increases churn" if coeff > 0 else "Decreases churn",
                     "magnitude": abs(coeff)
                 }
                 for feature, coeff in sorted_coeffs
