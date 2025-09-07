@@ -7,7 +7,7 @@ from shared import model_path, scaler_path, label_encoders_path
 import logging
 from pipeline import ml_pipeline
 
-app = FastAPI(title='Predict-o-matic')
+app = FastAPI(title='Predict-o-matica')
 
 logger = logging.getLogger("uvicorn.error")
 
