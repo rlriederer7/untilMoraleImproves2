@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { useCoefficients } from "../hooks/useCoefficients";
+import { useRetrain } from "../hooks/useRetrain";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 
 const CoefficientsPage = () => {
-    const { coefficients, loading, error, fetchCoefficients, clearCoefficients } = useCoefficients();
+    const { coefficients, loading: coefficientsLoading, error: coefficientsError, fetchCoefficients, clearCoefficients } = useCoefficients();
+    const { accuracy, loading: retrainLoading, error: retrainError, fetchAccuracy, clearAccuracy } = useRetrain();
 
     useEffect(() => {
         fetchCoefficients();
@@ -53,14 +55,24 @@ const CoefficientsPage = () => {
             <div style={{ marginBottom: '20px' }}>
                 <button
                     onClick={fetchCoefficients}
-                    disabled={loading}
+                    disabled={retrainLoading || coefficientsLoading}
                     style={{ padding: '10px 20px', marginRight: '10px' }}
                 >
-                    {loading ? 'Loading...' : 'Refresh Coefficients'}
+                    {coefficientsLoading ? 'Loading...' : 'Refresh Coefficients'}
                 </button>
             </div>
 
-            {error && (
+            <div style={{ marginBottom: '20px' }}>
+                <button
+                    onClick={fetchAccuracy}
+                    disabled={retrainLoading || coefficientsLoading}
+                    style={{ padding: '10px 20px', marginRight: '10px' }}
+                >
+                    {retrainLoading ? 'Loading...' : 'Retrain Model'}
+                </button>
+            </div>
+
+            {(coefficientsError || retrainError) && (
                 <div style={{
                     color: 'red',
                     margin: '10px 0',
@@ -69,17 +81,24 @@ const CoefficientsPage = () => {
                     borderRadius: '4px',
                     backgroundColor: '#ffeeee'
                 }}>
-                    Error: {error}
+                    {coefficientsError && <div>Coefficients Error: {coefficientsError}</div>}
+                    {retrainError && <div>Retrain Error: {retrainError}</div>}
                 </div>
             )}
 
-            {loading && (
+            {coefficientsLoading && (
                 <div style={{ textAlign: 'center', padding: '20px' }}>
                     <p>Loading coefficients...</p>
                 </div>
             )}
 
-            {coefficients && !loading && (
+            {retrainLoading && (
+                <div style={{ textAlign: 'center', padding: '20px' }}>
+                    <p>Retraining Model...</p>
+                </div>
+            )}
+
+            {coefficients && !coefficientsLoading && (
                 <>
                     <div style={{
                         margin: '20px 0',
