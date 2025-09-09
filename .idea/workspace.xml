@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Looks terrible but chart added, colors are all wrong, tooltip unreadable, but that's just aesthetic, will fix later">
+    <list default="true" id="219980ed-e92f-47de-9130-3d55fd72af51" name="Changes" comment="Added spring support for retraining endpoint on python-ml-service">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/ChurnTrainingResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/dto/Metrics.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/pages/CoefficientsPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/CoefficientsPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-ml-service/src/processing/prediction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/client/PredictionClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/morgan/untilmoraleimproves2/controller/ChurnController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +34,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -116,6 +117,7 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.morgan.untilmoraleimproves2.dto" />
+      <recent name="org.morgan.untilmoraleimproves2.controller" />
     </key>
   </component>
   <component name="RunManager" selected="Python.prediction">
@@ -293,7 +295,6 @@
         <item itemvalue="Python.pipeline" />
         <item itemvalue="Python.training_utils" />
         <item itemvalue="Python.utils" />
-        <item itemvalue="Spring Boot.UntilMoraleImproves2Application" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +302,6 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.23892.409" />
-        <option value="bundled-js-predefined-d6986cc7102b-e03c56caf84a-JavaScript-IU-252.23892.409" />
       </set>
     </attachedChunks>
   </component>
@@ -335,7 +335,8 @@
       <workItem from="1756864671511" duration="14509000" />
       <workItem from="1756936012400" duration="5891000" />
       <workItem from="1757097594438" duration="3925000" />
-      <workItem from="1757269912650" duration="2933000" />
+      <workItem from="1757269912650" duration="3103000" />
+      <workItem from="1757365474124" duration="10000" />
     </task>
     <task id="LOCAL-00001" summary="Added basic functionality to post and get messages through the UI">
       <option name="closed" value="true" />
@@ -545,7 +546,31 @@
       <option name="project" value="LOCAL" />
       <updated>1757104294647</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Fixed CoefficientsPage.jsx coloration/formatting, added training endpoint to prediction.py, need backend/frontend integration">
+      <option name="closed" value="true" />
+      <created>1757272932434</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1757272932434</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Fixed CoefficientsPage.jsx coloration/formatting, added training endpoint to prediction.py, need backend/frontend integration">
+      <option name="closed" value="true" />
+      <created>1757272960491</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1757272960491</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Fixed CoefficientsPage.jsx coloration/formatting, added training endpoint to prediction.py, need backend/frontend integration">
+      <option name="closed" value="true" />
+      <created>1757273028513</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1757273028513</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,6 +606,8 @@
     <MESSAGE value="Added dtos and microservice endpoint for fetching model coefficients" />
     <MESSAGE value="Added coefficient retrieval functionality to backend" />
     <MESSAGE value="Looks terrible but chart added, colors are all wrong, tooltip unreadable, but that's just aesthetic, will fix later" />
-    <option name="LAST_COMMIT_MESSAGE" value="Looks terrible but chart added, colors are all wrong, tooltip unreadable, but that's just aesthetic, will fix later" />
+    <MESSAGE value="Fixed CoefficientsPage.jsx coloration/formatting, added training endpoint to prediction.py, need backend/frontend integration" />
+    <MESSAGE value="Added spring support for retraining endpoint on python-ml-service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added spring support for retraining endpoint on python-ml-service" />
   </component>
 </project>

@@ -3,6 +3,7 @@ package org.morgan.untilmoraleimproves2.controller;
 import org.morgan.untilmoraleimproves2.client.PredictionClient;
 import org.morgan.untilmoraleimproves2.dto.ChurnPredictionRequest;
 import org.morgan.untilmoraleimproves2.dto.ChurnPredictionResponse;
+import org.morgan.untilmoraleimproves2.dto.ChurnTrainingResponse;
 import org.morgan.untilmoraleimproves2.dto.CoefficientsResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +17,15 @@ public class ChurnController {
         this.predictionClient = predictionClient;
     }
 
+    @PostMapping("/train")
+    public ResponseEntity<ChurnTrainingResponse> trainModel() {
+        ChurnTrainingResponse response = predictionClient.trainModel();
+        return ResponseEntity.ok(response);
+    }
+
     @PostMapping("/predict")
     public ResponseEntity<ChurnPredictionResponse> predictChurn(
             @RequestBody ChurnPredictionRequest request) {
-//        System.out.println("Received request: " + request); // Add this
         ChurnPredictionResponse response = predictionClient.predictChurn(request);
         return ResponseEntity.ok(response);
     }
