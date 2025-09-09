@@ -64,7 +64,10 @@ const CoefficientsPage = () => {
 
             <div style={{ marginBottom: '20px' }}>
                 <button
-                    onClick={fetchAccuracy}
+                    onClick={async () => {
+                        await fetchAccuracy();
+                        fetchCoefficients();
+                    }}
                     disabled={retrainLoading || coefficientsLoading}
                     style={{ padding: '10px 20px', marginRight: '10px' }}
                 >
