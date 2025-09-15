@@ -19,46 +19,91 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Docker images
-        run: docker-compose build
+        run: docker compose build
 
       - name: Start services
-        run: docker-compose up -d
+        run: docker compose up -d
+
+      - name: Check running
+        run: |
+          echo "=== Container Status ==="
+          docker compose ps
+          echo "=== Container Logs (50 lines) ==="
+          docker compose logs --tail=50
+
+      - name: Wait for Postgres
+        run: |
+          echo "Waiting for Postgres v4"
+          POSTGRES_READY=false
+          for i in {1..24}; do
+            if docker compose exec -T postgres pg_isready -U myuser; then
+              echo "Postgres ready"
+              POSTGRES_READY=true
+              break
+            fi
+            echo "Postgres is not ready yet (attempt number $i)"
+            sleep 10
+          done
+          if [ "$POSTGRES_READY" = false ]; then
+            echo "Postgres failed to start in allotted time"
+            docker compose logs postgres || docker compose logs || echo "Failed to retrieve postgres logs"
+            exit 1
+          fi
 
       - name: Wait for Spring Boot
         run: |
           echo "Waiting for Spring Boot"
+          SPRING_READY=false
           for i in {1..24}; do
             if curl -f http://localhost:8080/actuator/health 2>/dev/null || curl -f http://localhost:8080/health 2>/dev/null; then
               echo "Spring Boot ready (attempt number $i)"
+              SPRING_READY=true
               break
             fi
             echo "Spring Boot is not ready yet (attempt number $i)"
             sleep 10
           done
+          if [ "$SPRING_READY" = false ]; then
+            echo "Spring Boot failed to start in allotted time"
+            docker compose logs backend || docker compose logs || echo "Failed to retrieve Spring logs"
+            exit 1
+          fi
 
       - name: Wait for React
         run: |
           echo "Waiting for React"
+          REACT_READY=false
           for i in {1..24}; do
             if curl -f http://localhost:3000/health 2>/dev/null; then
               echo "React ready (attempt number $i)"
+              REACT_READY=true
               break
             fi
             echo "React is not ready yet (attempt number $i)"
             sleep 10
           done
+          if [ "$REACT_READY" = false ]; then
+            echo "React failed to start in allotted time"
+            docker compose logs react || echo "Failed to retrieve React logs"
+          fi
 
       - name: Wait for FastAPI
         run: |
           echo "Waiting for FastAPI"
+          FASTAPI_READY=false
           for i in {1..24}; do
             if curl -f http://localhost:8000/health 2>/dev/null; then
               echo "FastAPI ready (attempt number $i)"
+              FASTAPI_READY=true
               break
             fi
             echo "FastAPI is not ready yet (attempt number $i)"
             sleep 10
           done
+          if [ "$FASTAPI_READY" = false ]; then
+            echo "FastAPI failed to start in allotted time"
+            docker compose logs fastapi || docker compose logs python || echo "Failed to retrieve FastAPI logs"
+          fi
 
       - name: Final health check
         run: |
@@ -68,15 +113,15 @@ jobs:
           echo "FastAPI: " && curl -f http://localhost:8000/health 2>/dev/null || echo "FastAPI unreachable"
 
       - name: Show running containers
-        run: docker-compose ps
+        run: docker compose ps
 
       - name: Show logs iff tests fail
         if: failure()
-        run: docker-compose logs
+        run: docker compose logs
 
       - name: Stop services
         if: always()
-        run: docker-compose down
+        run: docker compose down
 
   deploy:
     needs: build-and-test

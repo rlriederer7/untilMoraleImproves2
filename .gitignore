@@ -2,8 +2,16 @@ backend/target/
 backend/.idea/
 backend/data/
 
-frontend/node_modules/
+frontend/src/node_modules/
 frontend/build/
 
 *.log
 .DS_Store
+python-ml-service/src/processing/preprocessors/scaler.pkl
+python-ml-service/src/processing/preprocessors/label_encoders.pkl
+python-ml-service/src/processing/models/model.pkl
+frontend/src/package-lock.json
+data/testDatabase.mv.db
+backend/logs
+python-ml-service/src/processing/__pycache__
+.idea/workspace.xml
