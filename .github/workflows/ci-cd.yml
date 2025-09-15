@@ -36,8 +36,9 @@ jobs:
           echo "Waiting for Postgres v3"
           POSTGRES_READY=false
           for i in {1..24}; do
-            if docker compose exec -T postgres pg_isready -U postgres; then
+            if docker compose exec -T postgres pg_isready -U myuser; then
               echo "Postgres ready"
+              POSTGRES_READY=true
               break
             fi
             echo "Postgres is not ready yet (attempt number $i)"
@@ -75,6 +76,7 @@ jobs:
           for i in {1..24}; do
             if curl -f http://localhost:3000/health 2>/dev/null; then
               echo "React ready (attempt number $i)"
+              REACT_READY=true
               break
             fi
             echo "React is not ready yet (attempt number $i)"
@@ -92,6 +94,7 @@ jobs:
           for i in {1..24}; do
             if curl -f http://localhost:8000/health 2>/dev/null; then
               echo "FastAPI ready (attempt number $i)"
+              FASTAPI_READY=true
               break
             fi
             echo "FastAPI is not ready yet (attempt number $i)"
