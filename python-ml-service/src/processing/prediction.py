@@ -39,6 +39,10 @@ class PredictionRequest(BaseModel):
     MonthlyCharges: float
     TotalCharges: float
 
+@app.get("/health")
+def health_check():
+    return {"status": "healthy"}
+
 @app.post("/train")
 async def train_model():
     try:
