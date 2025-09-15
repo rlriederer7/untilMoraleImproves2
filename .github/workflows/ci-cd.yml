@@ -33,7 +33,7 @@ jobs:
 
       - name: Wait for Postgres
         run: |
-          echo "Waiting for Postgres"
+          echo "Waiting for Postgres v2"
           POSTGRES_READY=false
           for i in {1..30}; do
             if docker compose exec -T postgres-db pg_isready -U myuser -d testdatabase; then
