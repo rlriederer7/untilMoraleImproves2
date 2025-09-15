@@ -31,6 +31,24 @@ jobs:
           echo "=== Container Logs (50 lines) ==="
           docker compose logs --tail=50
 
+      - name: Wait for Postgres
+        run: |
+          echo "Waiting for Postgres"
+          POSTGRES_READY=false
+          for i in {1..24}; do
+            if docker compose exec -T postgres pg_isready -U postgres; then
+              echo "Postgres ready"
+              break
+            fi
+            echo "Postgres is not ready yet (attempt number $i)"
+            sleep 10
+          done
+          if [ "$POSTGRES_READY" = false ]; then
+            echo "Postgres failed to start in allotted time"
+            docker compose logs postgres || docker compose logs || echo "Failed to retrieve postgres logs"
+            exit 1
+          fi
+
       - name: Wait for Spring Boot
         run: |
           echo "Waiting for Spring Boot"
