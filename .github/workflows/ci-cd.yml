@@ -1,0 +1,91 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker images
+        run: docker-compose build
+
+      - name: Start services
+        run: docker-compose up -d
+
+      - name: Wait for Spring Boot
+        run: |
+          echo "Waiting for Spring Boot"
+          for i in {1..24}; do
+            if curl -f http://localhost:8080/actuator/health 2>/dev/null || curl -f http://localhost:8080/health 2>/dev/null; then
+              echo "Spring Boot ready (attempt number &i)"
+              break
+            fi
+            echo "Spring Boot is not ready yet (attempt number &i)
+            sleep 10
+          done
+
+      - name: Wait for React
+        run: |
+          echo "Waiting for React"
+          for i in {1..24}; do
+            if curl -f http://localhost:3000/health 2>/dev/null; then
+              echo "React ready (attempt number &i)"
+              break
+            fi
+            echo "React is not ready yet (attempt number &i)
+            sleep 10
+          done
+
+      - name: Wait for FastAPI
+        run: |
+          echo "Waiting for FastAPI"
+          for i in {1..24}; do
+            if curl -f http://localhost:8000/health 2>/dev/null; then
+              echo "FastAPI ready (attempt number &i)"
+              break
+            fi
+            echo "FastAPI is not ready yet (attempt number &i)
+            sleep 10
+          done
+
+      - name: Final health check
+        run : |
+          echo "Final health check"
+          echo "Spring Boot: " && curl -f http://localhost:8080/actuator/health 2>/dev/null || echo "Spring Boot unreachable"
+          echo "React: " && curl -f http://localhost:3000 2>/dev/null || echo "React unreachable" 
+          echo "FastAPI: " && curl -f http://localhost:8000/health 2>/dev/null || echo "FastAPI unreachable"
+
+      - name: Show running containers
+        run: docker-compose ps
+
+      - name: Show logs iff tests fail
+        if: failure()
+        run: docker-compose logs
+
+      - name: Stop services
+        if: always()
+        run: docker-compose down
+
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Simulate deployment
+        run: |
+          echo "Deployment logic would go here, if you had any"
