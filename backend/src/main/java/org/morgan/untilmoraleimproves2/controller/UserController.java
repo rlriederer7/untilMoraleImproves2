@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
     @Autowired
@@ -26,7 +26,7 @@ public class UserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/users")
+    @PostMapping("")
     public ResponseEntity<User> createUser(@RequestBody User user){
         try {
             if (userService.existsByUserName(user.getUserName())){
@@ -41,12 +41,12 @@ public class UserController {
         }
     }
 
-    @GetMapping("/users")
+    @GetMapping("")
     public ResponseEntity<List<User>> getAllUsers(){
         return ResponseEntity.status(HttpStatus.OK).body(userService.findAll());
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable Long id) {
         Optional<User> userOpt = userService.findById(id);
         if (userOpt.isEmpty()) {
@@ -57,7 +57,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
-    @PatchMapping("/users/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updates){
         Optional<User> userOpt = userService.findById(id);
         if (userOpt.isEmpty()) {
