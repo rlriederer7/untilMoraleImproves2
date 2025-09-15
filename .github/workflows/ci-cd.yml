@@ -46,7 +46,7 @@ jobs:
           done
           if [ "$SPRING_READY" = false ]; then
             echo "Spring Boot failed to start in allotted time"
-            docker compose logs spring-boot || docker compose logs || echo "Failed to retrieve Spring logs"
+            docker compose logs backend || docker compose logs || echo "Failed to retrieve Spring logs"
             exit 1
           fi
 
@@ -78,7 +78,6 @@ jobs:
             fi
             echo "FastAPI is not ready yet (attempt number $i)"
             sleep 10
-          done
           done
           if [ "$FASTAPI_READY" = false ]; then
             echo "FastAPI failed to start in allotted time"
