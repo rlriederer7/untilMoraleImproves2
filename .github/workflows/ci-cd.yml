@@ -34,7 +34,7 @@ jobs:
       - name: Wait for Spring Boot
         run: |
           echo "Waiting for Spring Boot"
-          SPRING_READY = false
+          SPRING_READY=false
           for i in {1..24}; do
             if curl -f http://localhost:8080/actuator/health 2>/dev/null || curl -f http://localhost:8080/health 2>/dev/null; then
               echo "Spring Boot ready (attempt number $i)"
@@ -53,7 +53,7 @@ jobs:
       - name: Wait for React
         run: |
           echo "Waiting for React"
-          REACT_READY = false
+          REACT_READY=false
           for i in {1..24}; do
             if curl -f http://localhost:3000/health 2>/dev/null; then
               echo "React ready (attempt number $i)"
@@ -70,7 +70,7 @@ jobs:
       - name: Wait for FastAPI
         run: |
           echo "Waiting for FastAPI"
-          FASTAPI_READY = false
+          FASTAPI_READY=false
           for i in {1..24}; do
             if curl -f http://localhost:8000/health 2>/dev/null; then
               echo "FastAPI ready (attempt number $i)"
