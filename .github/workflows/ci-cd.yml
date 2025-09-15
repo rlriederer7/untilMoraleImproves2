@@ -5,6 +5,7 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -28,10 +29,10 @@ jobs:
           echo "Waiting for Spring Boot"
           for i in {1..24}; do
             if curl -f http://localhost:8080/actuator/health 2>/dev/null || curl -f http://localhost:8080/health 2>/dev/null; then
-              echo "Spring Boot ready (attempt number &i)"
+              echo "Spring Boot ready (attempt number $i)"
               break
             fi
-            echo "Spring Boot is not ready yet (attempt number &i)
+            echo "Spring Boot is not ready yet (attempt number $i)"
             sleep 10
           done
 
@@ -40,10 +41,10 @@ jobs:
           echo "Waiting for React"
           for i in {1..24}; do
             if curl -f http://localhost:3000/health 2>/dev/null; then
-              echo "React ready (attempt number &i)"
+              echo "React ready (attempt number $i)"
               break
             fi
-            echo "React is not ready yet (attempt number &i)
+            echo "React is not ready yet (attempt number $i)"
             sleep 10
           done
 
@@ -52,15 +53,15 @@ jobs:
           echo "Waiting for FastAPI"
           for i in {1..24}; do
             if curl -f http://localhost:8000/health 2>/dev/null; then
-              echo "FastAPI ready (attempt number &i)"
+              echo "FastAPI ready (attempt number $i)"
               break
             fi
-            echo "FastAPI is not ready yet (attempt number &i)
+            echo "FastAPI is not ready yet (attempt number $i)"
             sleep 10
           done
 
       - name: Final health check
-        run : |
+        run: |
           echo "Final health check"
           echo "Spring Boot: " && curl -f http://localhost:8080/actuator/health 2>/dev/null || echo "Spring Boot unreachable"
           echo "React: " && curl -f http://localhost:3000 2>/dev/null || echo "React unreachable" 
