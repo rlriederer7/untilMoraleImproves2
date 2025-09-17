@@ -29,7 +29,7 @@ const authService = {
                 localStorage.setItem('userId', response.data.id);
                 localStorage.setItem('userName', response.data.userName);
 
-                this.setAuthToken(response.data.token)
+                setAuthToken(response.data.token)
             }
 
             return response.data
@@ -67,7 +67,7 @@ const authService = {
             return response.data;
         } catch (error) {
             if (error.response?.status === 401){
-                this.logout();
+                await this.logout();
             }
             throw error.response?.data
         }
@@ -89,6 +89,34 @@ const authService = {
 
     isLoggedIn(){
         return !!localStorage.getItem('token');
+    },
+
+    async verifyAuthentication(){
+        const token = this.getToken();
+        if (!token){
+            return false;
+        }
+
+        try{
+            await this.getCurrentUser();
+            return true;
+        }catch (error) {
+            await this.logout();
+            return false;
+        }
+    },
+
+    isTokenExpired(){
+        const token = this.getToken();
+        if (!token) return true;
+
+        try{
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const currentTime = Date.now()/1000;
+            return payload.exp < currentTime;
+        }catch (error){
+            return true;
+        }
     },
 
     getToken() {

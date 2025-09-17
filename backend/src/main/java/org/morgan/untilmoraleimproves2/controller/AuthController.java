@@ -70,7 +70,6 @@ public class AuthController {
             String jwt = jwtUtils.generateJwtToken(authentication);
             UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-            // Get the user ID for the response
             Optional<User> userOpt = userService.findByUserName(userDetails.getUsername());
             Long userId = userOpt.map(User::getUserId).orElse(null);
 
